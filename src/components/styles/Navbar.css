@@ -1,0 +1,17 @@
+.NavItem-link {
+  padding: 7px;
+  margin-right: 5px;
+  border-radius: 5px;
+  color: white;
+}
+
+.link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.link:hover {
+  text-decoration: none;
+  color: #CCC;
+}
+
