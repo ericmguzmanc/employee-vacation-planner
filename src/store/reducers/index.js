@@ -1,8 +1,10 @@
 import { employees } from './employeeReducer';
+import { page } from './pageReducer';
 import { combineReducers } from 'redux';
 
 const rootReducer = combineReducers({
-  employees
+  employees,
+  page
 });
 
 export default rootReducer;

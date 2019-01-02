@@ -7,8 +7,9 @@ import {
 } from 'reactstrap';
 import './styles/Navbar.css';
 import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUmbrellaBeach, faUsers, faCog } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUmbrellaBeach, faUsers, faCog } from '@fortawesome/free-solid-svg-icons';
+
 
 const NavBar = () => {
 

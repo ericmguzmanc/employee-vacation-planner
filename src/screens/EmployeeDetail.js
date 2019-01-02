@@ -1,16 +1,20 @@
 import React, { Fragment } from 'react';
-import withNavbar from '../components/withNavbar';
+import withSidebar from '../components/withSidebar';
 
-const EmployeeDetailContent = () => {
+const EmployeeDetail = () => {
   return(
     <Fragment>
-      <h2>
-        Employee Detail
-      </h2>
+      <h3>Employee Detail</h3>
+      <hr />
+      ...
     </Fragment>
   );
 }
 
-const EmployeeDetail = withNavbar(EmployeeDetailContent);
+const mapStateToProps = ({ page: { sidebarExpanded } }) => {
+  return {
+    sidebarExpanded
+  }
+};
 
-export default EmployeeDetail;
+export default withSidebar(EmployeeDetail, mapStateToProps);

@@ -1,17 +1,26 @@
 import React, { Fragment } from 'react';
 import VacationList from '../components/VacationList';
-import withNavbar from '../components/withNavbar';
+import withSidebar from '../components/withSidebar';
 
-const HomeContent = () => {
+const Home = (props) => {
   return(
     <Fragment>
       <div >
-        <VacationList />
+        <h3>On vacation</h3>
+        <hr />
+        <div className="text-center">
+          <VacationList />
+        </div>
       </div>
     </Fragment>
   );
 };
 
-const Home = withNavbar(HomeContent);
 
-export default Home;
+const mapStateToProps = ({ page: { sidebarExpanded } }) => {
+  return {
+    sidebarExpanded
+  }
+};
+
+export default withSidebar(Home, mapStateToProps);

@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
-import withNavbar from '../components/withNavbar';
+import withSidebar from '../components/withSidebar';
 
-const  NotFoundContent = () => {
+const  NotFound = () => {
   return(
     <Fragment>
       <h2>Not Found :(</h2>
@@ -9,7 +9,12 @@ const  NotFoundContent = () => {
   );
 };
 
-const NotFound = withNavbar(NotFoundContent);
+const mapStateToProps = ({ page: { sidebarExpanded } }) => {
+  return {
+    sidebarExpanded
+  }
+};
 
-export default NotFound;
+export default withSidebar(NotFound, mapStateToProps);
+
 
