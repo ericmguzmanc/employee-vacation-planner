@@ -5,19 +5,17 @@ import withSidebar from '../components/withSidebar';
 const Home = (props) => {
   return(
     <Fragment>
-      <div >
-        <h3>On vacation</h3>
-        <hr />
-        <div className="text-center">
-          <VacationList />
-        </div>
+      <h3>On vacation</h3>
+      <hr />
+      <div className="text-center">
+        <VacationList />
       </div>
     </Fragment>
   );
 };
 
 
-const mapStateToProps = ({ page: { sidebarExpanded } }) => {
+const mapStateToProps = ({ configuration: { sidebarExpanded } }) => {
   return {
     sidebarExpanded
   }

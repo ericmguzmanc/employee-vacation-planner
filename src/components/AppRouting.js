@@ -23,6 +23,7 @@ const AppRouter = (props) => {
         <Route render={({ location, history }) => (
           <Fragment>
             <SideNav
+              style={{backgroundColor: "black"}}
               onSelect={(selected) => {
                 const to = '/' + selected;
                 if (location.pathname !== to) {

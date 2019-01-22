@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { Card, CardImg, CardText, CardBody,
-  CardTitle, Row, Col } from 'reactstrap';
+  CardTitle, Col } from 'reactstrap';
 
 const VacationList = () => {
   return(

@@ -2,9 +2,9 @@ import React, { Fragment } from 'react';
 
 const Loading = () => (
   <Fragment>
-    <h2>
+    <h5>
       Loading...
-    </h2>
+    </h5>
   </Fragment>
 );
 

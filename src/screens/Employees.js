@@ -13,7 +13,7 @@ const Employees =  () => {
 }
 
 
-const mapStateToProps = ({ page: { sidebarExpanded } }) => {
+const mapStateToProps = ({ configuration: { sidebarExpanded } }) => {
   return {
     sidebarExpanded
   }

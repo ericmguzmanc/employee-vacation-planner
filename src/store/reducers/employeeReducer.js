@@ -1,12 +1,12 @@
 
 import { 
-  REQUEST_EMPLOYEES,
-  RECEIVE_EMPLOYEES,
+  // REQUEST_EMPLOYEES,
+  // RECEIVE_EMPLOYEES,
   SET_EMPLOYEE_VACATION
 } from '../../utils/constants/actions.constants';
 
 
-export function employees(
+export function employeeReducer(
   state = {
     name: '',
     lastName: '',
@@ -18,11 +18,11 @@ export function employees(
   }
   , action) {
   switch(action) {
-    case REQUEST_EMPLOYEES: 
-      return state;
+    // case REQUEST_EMPLOYEES: 
+    //   return state;
       
-    case RECEIVE_EMPLOYEES:
-      return state;
+    // case RECEIVE_EMPLOYEES:
+    //   return state;
 
     case SET_EMPLOYEE_VACATION:
       return state;

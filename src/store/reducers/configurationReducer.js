@@ -1,6 +1,6 @@
 import { DARK_MODE_SET, SIDEBAR_MENU_EXPANDED } from '../../utils/constants/actions.constants';
 
-export function page(
+export function configurationReducer(
   state = {
     darkMode: false,
     sidebarExpanded: false,

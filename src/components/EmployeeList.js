@@ -1,41 +1,71 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, PureComponent } from 'react';
+import { connect } from 'react-redux';
 import { Table } from 'reactstrap';
+import { fetchEmployees } from '../store/actions/EmployeeList';
+import { Animated } from 'react-animated-css';
+import Loading from './Loading';
 
-const EmployeeList = () => {
-  return(
-    <Fragment>
-      <Table>
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Name</th>
-            <th>Title</th>
-            <th>Hire Date</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-          </tr>
-        </tbody>
-      </Table>
-    </Fragment>
-  );
+class EmployeeList extends PureComponent {
+
+  componentDidMount() {
+    this.props.fetchEmployees();
+  }
+
+  render() {
+
+    const { isLoading, employees } = this.props.employeeList;
+
+    if (typeof isLoading != undefined) {
+      if(isLoading) {
+        return <Loading />;
+      }
+    }
+
+    const formatIsOnVacation = (onVacation) => {
+      if(onVacation) {
+        return 'Yes';
+      } else {
+        return 'No';
+      }
+    }
+
+    return(
+      <Fragment>
+        <Animated animationIn="fadeIn" animationOut="fadeOut">
+          <Table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Title</th>
+                <th>Hire Date</th>
+                <th>On Vacation</th>
+              </tr>
+            </thead>
+            <tbody>
+            { 
+              employees.map((employee, index) => (
+                <tr key={index}>
+                  <th scope="row">{index + 1}</th>
+                  <td>{employee.name + ' ' + employee.lastName}</td>
+                  <td>{employee.title}</td>
+                  <td>{employee.hireDate}</td>
+                  <td>{formatIsOnVacation(employee.vacationActive)}</td>
+                </tr>
+              ))
+            }
+            </tbody>
+          </Table>
+        </Animated>
+      </Fragment>
+    );
+  }
+}
+
+const mapStateToProps = ( { employeeList } ) => {
+  return {
+    employeeList
+  }
 };
 
-export default EmployeeList;
+export default connect(mapStateToProps, { fetchEmployees })(EmployeeList);

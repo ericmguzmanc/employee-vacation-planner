@@ -1,4 +1,4 @@
-export const employeeList = [
+export const employeeListMock = [
   {
     name: 'Eric',
     lastName: 'Guzman',
@@ -11,7 +11,7 @@ export const employeeList = [
   {
     name: 'Enmanuel',
     lastName: 'Guzman',
-    title: '',
+    title: 'Sales Representative',
     hireDate: '2018-12-26T16:02:12.031Z',
     vacationActive : false,
     vacationStarts: '2018-12-28T16:02:12.031Z',
@@ -20,7 +20,7 @@ export const employeeList = [
   {
     name: 'Emily',
     lastName: 'Rubens',
-    title: '',
+    title: 'Manager',
     hireDate: '2018-12-26T16:02:12.031Z',
     vacationActive : false,
     vacationStarts: '2018-12-28T16:02:12.031Z',
@@ -29,7 +29,7 @@ export const employeeList = [
   {
     name: 'Leonardo',
     lastName: 'Matas',
-    title: '',
+    title: 'Sales Representative',
     hireDate: '2018-12-26T16:02:12.031Z',
     vacationActive : false,
     vacationStarts: '2018-12-28T16:02:12.031Z',
@@ -38,7 +38,7 @@ export const employeeList = [
   {
     name: 'Pedro',
     lastName: 'Almanzar',
-    title: '',
+    title: 'Sales Representative',
     hireDate: '2018-12-26T16:02:12.031Z',
     vacationActive : false,
     vacationStarts: '2018-12-28T16:02:12.031Z',
@@ -47,7 +47,7 @@ export const employeeList = [
   {
     name: 'Juan',
     lastName: 'Diaz',
-    title: '',
+    title: 'Web Developer',
     hireDate: '2018-12-26T16:02:12.031Z',
     vacationActive : false,
     vacationStarts: '2018-12-28T16:02:12.031Z',
@@ -56,7 +56,7 @@ export const employeeList = [
   {
     name: 'Alexis',
     lastName: 'Lopez',
-    title: '',
+    title: 'Web Developer',
     hireDate: '2018-12-26T16:02:12.031Z',
     vacationActive : false,
     vacationStarts: '2018-12-28T16:02:12.031Z',
@@ -65,7 +65,7 @@ export const employeeList = [
   {
     name: 'Rosaura',
     lastName: 'Caba',
-    title: '',
+    title: 'Web Developer',
     hireDate: '2018-12-26T16:02:12.031Z',
     vacationActive : false,
     vacationStarts: '2018-12-28T16:02:12.031Z',
@@ -74,7 +74,7 @@ export const employeeList = [
   {
     name: 'Jose',
     lastName: 'Gomez',
-    title: '',
+    title: 'iOS Developer',
     hireDate: '2018-12-26T16:02:12.031Z',
     vacationActive : false,
     vacationStarts: '2018-12-28T16:02:12.031Z',
@@ -83,7 +83,7 @@ export const employeeList = [
   {
     name: 'Patric',
     lastName: 'Rodriguez',
-    title: '',
+    title: 'iOS Developer',
     hireDate: '2018-12-26T16:02:12.031Z',
     vacationActive : false,
     vacationStarts: '2018-12-28T16:02:12.031Z',
@@ -101,7 +101,7 @@ export const employeeList = [
   {
     name: 'Natalia',
     lastName: 'Mendez',
-    title: '',
+    title: 'Android Developer',
     hireDate: '2018-12-26T16:02:12.031Z',
     vacationActive : false,
     vacationStarts: '2018-12-28T16:02:12.031Z',
@@ -110,7 +110,7 @@ export const employeeList = [
   {
     name: 'Manuel',
     lastName: 'Rosario',
-    title: '',
+    title: 'Android Developer',
     hireDate: '2018-12-26T16:02:12.031Z',
     vacationActive : false,
     vacationStarts: '2018-12-28T16:02:12.031Z',
@@ -119,7 +119,7 @@ export const employeeList = [
   {
     name: 'Rafael',
     lastName: 'Mars',
-    title: '',
+    title: 'Manager',
     hireDate: '2018-12-26T16:02:12.031Z',
     vacationActive : false,
     vacationStarts: '2018-12-28T16:02:12.031Z',
@@ -128,7 +128,7 @@ export const employeeList = [
   {
     name: 'Andres',
     lastName: 'Encarnacion',
-    title: '',
+    title: 'Manager',
     hireDate: '2018-12-26T16:02:12.031Z',
     vacationActive : false,
     vacationStarts: '2018-12-28T16:02:12.031Z',
@@ -137,7 +137,7 @@ export const employeeList = [
   {
     name: 'Alberto',
     lastName: 'Santos',
-    title: '',
+    title: 'Sales Representative',
     hireDate: '2018-12-26T16:02:12.031Z',
     vacationActive : false,
     vacationStarts: '2018-12-28T16:02:12.031Z',
@@ -146,7 +146,7 @@ export const employeeList = [
   {
     name: 'Jennifer',
     lastName: 'Lopez',
-    title: '',
+    title: 'Sales Representative',
     hireDate: '2018-12-26T16:02:12.031Z',
     vacationActive : false,
     vacationStarts: '2018-12-28T16:02:12.031Z',
@@ -155,7 +155,7 @@ export const employeeList = [
   {
     name: 'Stephanie',
     lastName: 'Wissin',
-    title: '',
+    title: 'Sales Representative',
     hireDate: '2018-12-26T16:02:12.031Z',
     vacationActive : false,
     vacationStarts: '2018-12-28T16:02:12.031Z',
@@ -164,7 +164,7 @@ export const employeeList = [
   {
     name: 'Nicole',
     lastName: 'Sanchez',
-    title: '',
+    title: 'Sales Representative',
     hireDate: '2018-12-26T16:02:12.031Z',
     vacationActive : false,
     vacationStarts: '2018-12-28T16:02:12.031Z',
@@ -173,7 +173,7 @@ export const employeeList = [
   {
     name: 'Paola',
     lastName: 'Reid',
-    title: '',
+    title: 'Sales Representative',
     hireDate: '2018-12-26T16:02:12.031Z',
     vacationActive : false,
     vacationStarts: '2018-12-28T16:02:12.031Z',
