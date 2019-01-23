@@ -32,7 +32,7 @@ class EmployeeList extends PureComponent {
     return(
       <Fragment>
         <Animated animationIn="fadeIn" animationOut="fadeOut">
-          <Table>
+          <Table striped>
             <thead>
               <tr>
                 <th>#</th>

@@ -12,8 +12,7 @@
     "react": "^16.7.0",
     "react-animated-css": "^1.0.4",
     "react-dom": "^16.7.0",
-    "react-scripts": "2.1.2",
-    "reactstrap": "^6.5.0"
+    "react-scripts": "2.1.2"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -34,8 +33,10 @@
     "axios": "^0.18.0",
     "react-redux": "^6.0.0",
     "react-router-dom": "^4.3.1",
+    "reactstrap": "^7.1.0",
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "uuid": "^3.3.2"
   }
 }

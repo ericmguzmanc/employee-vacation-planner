@@ -1,98 +1,98 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, PureComponent } from 'react';
+import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 import { Card, CardImg, CardText, CardBody,
-  CardTitle, Col } from 'reactstrap';
+  CardTitle, Row, Col, Button } from 'reactstrap';
+import { fetchEmployeesOnVacation } from '../store/actions/VacationList';
+import Loading from './Loading';
+import { Animated } from 'react-animated-css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye, faHourglassEnd } from '@fortawesome/free-solid-svg-icons';
+import './styles/VacationList.css';
 
-const VacationList = () => {
-  return(
-    <Fragment>
-      <Col xs="12">
-        <Card style={{width: "21rem", display: "inline-block", margin: "5px"}}>
-          <CardImg top style={{width: "21rem"}} src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180" alt="Card image cap" />
-          <CardBody>
-            <CardTitle>Card Title</CardTitle>
-            <CardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CardText>
-            <CardText>
-              <small className="text-muted">Last updated 3 mins ago</small>
-            </CardText>
-          </CardBody>
-        </Card>
-        <Card style={{width: "21rem", display: "inline-block", margin: "5px"}}>
-          <CardImg top style={{width: "21rem"}} src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180" alt="Card image cap" />
-          <CardBody>
-            <CardTitle>Card Title</CardTitle>
-            <CardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CardText>
-            <CardText>
-              <small className="text-muted">Last updated 3 mins ago</small>
-            </CardText>
-          </CardBody>
-        </Card>
-        <Card style={{width: "21rem", display: "inline-block", margin: "5px"}}>
-          <CardImg top style={{width: "21rem"}} src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180" alt="Card image cap" />
-          <CardBody>
-            <CardTitle>Card Title</CardTitle>
-            <CardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CardText>
-            <CardText>
-              <small className="text-muted">Last updated 3 mins ago</small>
-            </CardText>
-          </CardBody>
-        </Card>
-        <Card style={{width: "21rem", display: "inline-block", margin: "5px"}}>
-          <CardImg top style={{width: "21rem"}} src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180" alt="Card image cap" />
-          <CardBody>
-            <CardTitle>Card Title</CardTitle>
-            <CardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CardText>
-            <CardText>
-              <small className="text-muted">Last updated 3 mins ago</small>
-            </CardText>
-          </CardBody>
-        </Card>
-        <Card style={{width: "21rem", display: "inline-block", margin: "5px"}}>
-          <CardImg top style={{width: "21rem"}} src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180" alt="Card image cap" />
-          <CardBody>
-            <CardTitle>Card Title</CardTitle>
-            <CardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CardText>
-            <CardText>
-              <small className="text-muted">Last updated 3 mins ago</small>
-            </CardText>
-          </CardBody>
-        </Card>
-        <Card style={{width: "21rem", display: "inline-block", margin: "5px"}}>
-          <CardImg top style={{width: "21rem"}} src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180" alt="Card image cap" />
-          <CardBody>
-            <CardTitle>Card Title</CardTitle>
-            <CardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CardText>
-            <CardText>
-              <small className="text-muted">Last updated 3 mins ago</small>
-            </CardText>
-          </CardBody>
-        </Card>
-        <Card style={{width: "21rem", display: "inline-block", margin: "5px"}}>
-          <CardImg top style={{width: "21rem"}} src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180" alt="Card image cap" />
-          <CardBody>
-            <CardTitle>Card Title</CardTitle>
-            <CardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CardText>
-            <CardText>
-              <small className="text-muted">Last updated 3 mins ago</small>
-            </CardText>
-          </CardBody>
-        </Card>
-        <Card style={{width: "21rem", display: "inline-block", margin: "5px"}}>
-          <CardImg top style={{width: "21rem"}} src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180" alt="Card image cap" />
-          <CardBody>
-            <CardTitle>Card Title</CardTitle>
-            <CardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CardText>
-            <CardText>
-              <small className="text-muted">Last updated 3 mins ago</small>
-            </CardText>
-          </CardBody>
-        </Card>
-        
+class VacationList extends PureComponent {
 
+  componentDidMount() {
+    this.props.fetchEmployeesOnVacation();
+  }
 
-      </Col>
-     
-    </Fragment>
-  );
+  render() {
+
+    const goToEmployee = (employeeCode) => {
+      this.props.history.push('/employee/' + employeeCode);
+    }
+
+    const { isLoading, employees } = this.props.vacationList;
+
+    if (typeof isLoading !== undefined) {
+      if (isLoading) {
+        return <Loading />
+      }
+    }
+
+    return(
+      <Fragment>
+        <Animated animationIn="fadeIn" animationOut="fadeOut">
+          <Col xs="12">
+            {
+
+              employees.map((employee, index) => {
+                if (typeof employee.vacationActive !== undefined) {
+                  if (employee.vacationActive) {
+                    // const employeePhoto = import(`../../${employee.employeePhoto}`);
+                    return (
+                      <Card key={index} style={{display: "inline-block"}} className="employeeCard">
+                        <CardImg top className="employeePhoto" src={`./${employee.employeePhoto}`} alt="Card image cap" />
+                        <CardBody>
+                          <CardTitle style={{fontWeight: "bold", fontSize: "1rem"}}>
+                            {employee.name + ' ' + employee.lastName}
+                          </CardTitle>
+                          <CardText className="text-muted" style={{fontSize: "0.9rem"}}>
+                            {employee.title}
+                          </CardText>
+                            <Row>
+                              <Col sm="12">
+                                <span className="" style={{fontSize:"1.1rem"}}>
+                                  Days left: <span style={{fontWeight:"bold"}}>5</span> 
+                                </span>
+                              </Col>
+                            </Row>
+                            <Row style={{paddingTop: "15px"}}>
+                              <Col sm="12">
+                                <Button outline color="secondary" style={cardButtonStyle} onClick={() => goToEmployee(employee.employeeCode)}>
+                                  <FontAwesomeIcon icon={faEye}/>
+                                </Button>
+                                <Button outline color="secondary" style={cardButtonStyle}>
+                                  <FontAwesomeIcon icon={faHourglassEnd}/>
+                                </Button>
+                              </Col>
+                            </Row>
+                        </CardBody>
+                      </Card>
+                    );
+                  } 
+                }  
+                return null; 
+              })
+                
+            }
+            
+          </Col>
+        </Animated>
+      </Fragment>
+    );
+  }
 }
 
-export default VacationList;
+const cardButtonStyle = {
+  margin: "2px",
+  width:"3rem"
+}
+
+const mapStateToProps = (state) => {
+  return {
+    vacationList: state.vacationList
+  }
+}
+
+export default withRouter(connect(mapStateToProps, { fetchEmployeesOnVacation })(VacationList));

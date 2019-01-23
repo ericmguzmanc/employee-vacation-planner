@@ -1,0 +1,18 @@
+.employeePhoto {
+  width: 150px;
+  height: 180px;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.employeeCard {
+  width: 18rem;
+  display: inline-block;
+  margin: 5px;
+  cursor: pointer;
+}
+/* .employeeCard:hover {
+  background-color: white;
+  opacity: 0.8;
+  transition: 200ms;
+} */

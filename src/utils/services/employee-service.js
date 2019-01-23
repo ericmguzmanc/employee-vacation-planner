@@ -27,9 +27,9 @@ class EmployeeService {
   }
 
   getEmployeesOnVacation() {
-    const promise = new Promise(() => {
+    const promise = new Promise((resolve, reject) => {
       setTimeout(() => {
-        return employeeListMock;
+        resolve(employeeListMock);
       }, 2000);
     });
 
