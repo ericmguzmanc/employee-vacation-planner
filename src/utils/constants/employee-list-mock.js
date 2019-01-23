@@ -23,7 +23,7 @@ export const employeeListMock = [
     hireDate: '2018-12-26T16:02:12.031Z',
     vacationActive : true,
     vacationStarts: '2018-12-28T16:02:12.031Z',
-    vacationEnds: '2019-01-05T16:02:12.031Z'
+    vacationEnds: '2019-02-01T16:02:12.031Z'
   },
   {
     name: 'Emily',
@@ -45,7 +45,7 @@ export const employeeListMock = [
     hireDate: '2018-12-26T16:02:12.031Z',
     vacationActive : true,
     vacationStarts: '2018-12-28T16:02:12.031Z',
-    vacationEnds: '2019-01-05T16:02:12.031Z'
+    vacationEnds: '2019-02-15T16:02:12.031Z'
   },
   {
     name: 'Pedro',
@@ -89,7 +89,7 @@ export const employeeListMock = [
     hireDate: '2018-12-26T16:02:12.031Z',
     vacationActive : true,
     vacationStarts: '2018-12-28T16:02:12.031Z',
-    vacationEnds: '2019-01-05T16:02:12.031Z'
+    vacationEnds: '2019-02-10T16:02:12.031Z'
   },
   {
     name: 'Jose',
@@ -144,7 +144,7 @@ export const employeeListMock = [
     hireDate: '2018-12-26T16:02:12.031Z',
     vacationActive : true,
     vacationStarts: '2018-12-28T16:02:12.031Z',
-    vacationEnds: '2019-01-05T16:02:12.031Z'
+    vacationEnds: '2019-01-27T16:02:12.031Z'
   },
   {
     name: 'Rafael',

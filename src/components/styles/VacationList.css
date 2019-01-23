@@ -11,6 +11,10 @@
   margin: 5px;
   cursor: pointer;
 }
+
+.employeeCardDays {
+  display: block;
+}
 /* .employeeCard:hover {
   background-color: white;
   opacity: 0.8;
