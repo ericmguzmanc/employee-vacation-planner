@@ -4,7 +4,7 @@ import Loading from './Loading';
 import { Col } from 'reactstrap';
 import { Animated } from 'react-animated-css';
 
-export default function withSidebar (WrappedComponent, mapStateToProps) {
+export default function withSidebar (WrappedComponent, mapStateToProps, mapDispatchToProps) {
   class ReduxContainer extends PureComponent {
     render() {
       return (
@@ -23,6 +23,6 @@ export default function withSidebar (WrappedComponent, mapStateToProps) {
     }
   };
 
-  return connect(mapStateToProps)(ReduxContainer);
+  return connect(mapStateToProps, mapDispatchToProps)(ReduxContainer);
 };
 

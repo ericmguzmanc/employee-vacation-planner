@@ -3,7 +3,7 @@ import { DARK_MODE_SET, SIDEBAR_MENU_EXPANDED } from '../../utils/constants/acti
 export function configurationReducer(
   state = {
     darkMode: false,
-    sidebarExpanded: false,
+    sidebarExpanded: true,
   }
   , action) {
   switch(action.type) {

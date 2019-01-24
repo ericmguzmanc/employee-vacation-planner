@@ -1,11 +1,12 @@
 import React, { Fragment } from 'react';
 import withSidebar from '../components/withSidebar';
 import EmployeeList from '../components/EmployeeList';
+import './styles/common.css';
 
 const Employees =  () => {
   return(
     <Fragment>
-      <h3>Employees</h3>
+      <span className="header-text">Employees</span>
       <hr />
       <EmployeeList />
     </Fragment>

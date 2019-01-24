@@ -1,11 +1,12 @@
 import React, { Fragment } from 'react';
 import VacationList from '../components/VacationList';
 import withSidebar from '../components/withSidebar';
+import './styles/common.css';
 
 const Home = (props) => {
   return(
     <Fragment>
-      <h3>On vacation</h3>
+      <span className="header-text">On vacation</span>
       <hr />
       <div className="text-center">
         <VacationList />

@@ -1,7 +1,8 @@
 import { 
   SET_EMPLOYEE_VACATION,
-  REQUEST_EMPLOYEES,
+  REQUEST_EMPLOYEE,
   RECEIVE_EMPLOYEES,
+  RECEIVE_EMPLOYEE,
 } from '../../utils/constants/actions.constants';
 import EmployeeService from '../../utils/services/employee-service';
 
@@ -12,9 +13,9 @@ export function setEmployeeVacation(payload) {
   }
 }
 
-export function requestEmployees() {
+export function requestEmployee() {
   return {
-    type: REQUEST_EMPLOYEES
+    type: REQUEST_EMPLOYEE
   }
 }
 
@@ -25,10 +26,26 @@ export function receiveEmployees(payload) {
   }
 }
 
+export function receiveEmployee(payload) {
+  console.log('receiveE ', payload)
+  return {
+    type: RECEIVE_EMPLOYEE,
+    payload: payload
+  }
+}
+
 export function fetchEmployees() {
   return dispatch => {
-    dispatch(requestEmployees());
+    dispatch(requestEmployee());
     EmployeeService.getEmployees()
       .then(response => dispatch(receiveEmployees(response)));
+  }
+}
+
+export function fetchEmployeeById(id) {
+  return dispatch => {
+    dispatch(requestEmployee());
+    EmployeeService.getEmployeeById(id)
+      .then(response => dispatch(receiveEmployee(response)))
   }
 }

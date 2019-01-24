@@ -4,12 +4,14 @@
   background-position: 50% 50%;
   background-repeat: no-repeat;
   background-size: cover;
+  border-top-left-radius: 15px !important;
+  border-top-right-radius: 15px !important;
 }
 .employeeCard {
   width: 18rem;
   display: inline-block;
   margin: 5px;
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 
 .employeeCardDays {
@@ -20,3 +22,18 @@
   opacity: 0.8;
   transition: 200ms;
 } */
+.numberCircle {
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  padding: 8px;
+  background: #fff;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: #333333;
+}
+
+.card-title {
+  border-bottom: 0px;
+}

@@ -20,7 +20,7 @@ class EmployeeService {
       setTimeout(() => {
         resolve(employeeListMock);
         // reject()
-      }, 2000);
+      }, 1000);
     });
 
     return promise;
@@ -30,7 +30,17 @@ class EmployeeService {
     const promise = new Promise((resolve, reject) => {
       setTimeout(() => {
         resolve(employeeListMock);
-      }, 2000);
+      }, 1000);
+    });
+
+    return promise;
+  }
+
+  getEmployeeById(id) {
+    const promise = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve(employeeListMock.filter((employee) => employee.employeeCode === Number(id)));
+      }, 1200);
     });
 
     return promise;

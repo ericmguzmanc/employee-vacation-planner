@@ -1,12 +1,14 @@
 import React, { Fragment } from 'react';
 import withSidebar from '../components/withSidebar';
+import './styles/common.css';
+import EmployeeDetailCards from '../components/EmployeeDetailCards';
 
 const EmployeeDetail = () => {
   return(
     <Fragment>
-      <h3>Employee Detail</h3>
+      <span className="header-text">Employee Detail</span>
       <hr />
-      ...
+      <EmployeeDetailCards />
     </Fragment>
   );
 }

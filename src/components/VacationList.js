@@ -2,61 +2,70 @@ import React, { Fragment, PureComponent } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Card, CardImg, CardText, CardBody,
-  CardTitle, Row, Col, Button, Badge } from 'reactstrap';
+  CardTitle, Row, Col, Button } from 'reactstrap';
 import { fetchEmployeesOnVacation } from '../store/actions/VacationList';
 import Loading from './Loading';
 import { Animated } from 'react-animated-css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye, faHourglassEnd } from '@fortawesome/free-solid-svg-icons';
+import { faEye, faUmbrellaBeach } from '@fortawesome/free-solid-svg-icons';
+import TooltipItem from './TooltipItem';
 import './styles/VacationList.css';
+import { daysUntilDate } from '../utils/functions/util';
 
 class VacationList extends PureComponent {
+
+  state = {
+    tooltipOpen: false
+  };
 
   componentDidMount() {
     this.props.fetchEmployeesOnVacation();
   }
 
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   console.log(nextProps, '\n', nextState)
+  // }
+
+  goToEmployee = (employeeCode) => {
+    this.props.history.push('/employee/' + employeeCode);
+  };
+
+  getVacationDaysLeft = (vacationEnds) => {
+    return daysUntilDate(vacationEnds);
+  };
+
+  getVacationDaysStatusColor = (vacationEnds) => {
+    const daysLeft = this.getVacationDaysLeft(vacationEnds);
+    let color = '';
+    if (daysLeft <= 5 ) {
+      color = '#ED2939';
+    } else if (daysLeft <= 10 && daysLeft > 5) {
+      color = '#FDDD5C';
+    } else {
+      color = '#03C03C';
+    }
+
+    return color;
+  }
+
   render() {
 
-    const goToEmployee = (employeeCode) => {
-      this.props.history.push('/employee/' + employeeCode);
-    };
-
-    const getVacationDaysLeft = (vacationEnds) => {
-      const todayDate = new Date();
-      const vacationEndsformatted = new Date(vacationEnds);
-      const daysToEnd = todayDate.getDate() - vacationEndsformatted.getDate();
-
-      return daysToEnd;
-
-    };
-
-    const getVacationDaysStatusColor = () => {
-
-    }
-
     const { isLoading, employees } = this.props.vacationList;
-
-    if (typeof isLoading !== undefined) {
-      if (isLoading) {
-        return <Loading />
-      }
-    }
 
     return(
       <Fragment>
         <Animated animationIn="fadeIn" animationOut="fadeOut">
           <Col xs="12">
-            {
-
+            { isLoading && <Loading />}
+            { !isLoading &&
               employees.map((employee, index) => {
                 if (typeof employee.vacationActive !== undefined) {
                   if (employee.vacationActive) {
                     return (
-                      <Card key={index} style={{display: "inline-block"}} className="employeeCard">
+                      <Card key={index} style={{display: "inline-block", borderRadius: "15px"}} className="employeeCard">
                         <CardImg top className="employeePhoto" src={`./${employee.employeePhoto}`} alt="Card image cap" />
                         <CardBody>
-                          <CardTitle style={{fontWeight: "bold", fontSize: "1rem"}}>
+                          <CardTitle style={{fontWeight: "bold", fontSize: "1rem", marginBottom: "0rem"}}>
                             {employee.name + ' ' + employee.lastName}
                           </CardTitle>
                           <CardText className="text-muted" style={{fontSize: "0.9rem"}}>
@@ -66,25 +75,24 @@ class VacationList extends PureComponent {
                               <Col sm="12">
                                 <div className="text-center" style={{fontSize:"1.1rem"}}>
                                   <span className="employeeCardDays">Days left: </span> 
-                                  <span className="employeeCardDays">
-                                    <Badge 
-                                      style={{fontWeight:"bold", padding:"5px", width:"3rem", fontSize:"1.5rem", }} 
-                                      color={() => getVacationDaysStatusColor(getVacationDaysLeft(employee.vacationEnds))} 
-                                      pill>
-                                      {() => getVacationDaysLeft(employee.vacationEnds)}
-                                    </Badge> 
-                                  </span>
+                                  <div className="employeeCardDays numberCircle" style={{margin: "0 auto", marginTop: "10px", border: `3px solid ${this.getVacationDaysStatusColor(employee.vacationEnds)}`}}>
+                                    {this.getVacationDaysLeft(employee.vacationEnds)}
+                                  </div>
                                 </div>
                               </Col>
                             </Row>
                             <Row style={{paddingTop: "15px"}}>
                               <Col sm="12">
-                                <Button outline color="secondary" style={cardButtonStyle} onClick={() => goToEmployee(employee.employeeCode)}>
-                                  <FontAwesomeIcon icon={faEye}/>
-                                </Button>
-                                <Button outline color="secondary" style={cardButtonStyle}>
-                                  <FontAwesomeIcon icon={faHourglassEnd}/>
-                                </Button>
+                                <TooltipItem placement="bottom" id={index} toggleText="See vacation Info">
+                                  <Button outline color="secondary" id={`VacationInfo-${index}`} style={cardButtonStyle}>
+                                    <FontAwesomeIcon icon={faUmbrellaBeach}/>
+                                  </Button>
+                                </TooltipItem>
+                                <TooltipItem placement="bottom" id={index + 1} toggleText="See Employee Info">
+                                  <Button outline color="secondary" id={`SeeEmployee-${index}`} style={cardButtonStyle} onClick={() => this.goToEmployee(employee.employeeCode)}>
+                                    <FontAwesomeIcon icon={faEye}/>
+                                  </Button>
+                                </TooltipItem>
                               </Col>
                             </Row>
                         </CardBody>
@@ -94,7 +102,6 @@ class VacationList extends PureComponent {
                 }  
                 return null; 
               })
-                
             }
             
           </Col>
@@ -106,7 +113,8 @@ class VacationList extends PureComponent {
 
 const cardButtonStyle = {
   margin: "2px",
-  width:"3rem"
+  width:"3rem",
+  border: "0px solid #ccc"
 }
 
 const mapStateToProps = (state) => {
