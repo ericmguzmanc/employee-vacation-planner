@@ -1,7 +1,6 @@
 
 import { 
-  REQUEST_EMPLOYEES,
-  RECEIVE_EMPLOYEES,
+  REQUEST_EMPLOYEE,
   RECEIVE_EMPLOYEE,
   SET_EMPLOYEE_VACATION
 } from '../../utils/constants/actions.constants';
@@ -22,15 +21,11 @@ export function selectedEmployeeReducer(
   }
   , action) {
   switch(action.type) {
-    case REQUEST_EMPLOYEES: 
-      return !this.state.isLoading;
+    case REQUEST_EMPLOYEE: 
+      return Object.assign({}, state, {isLoading: !state.isLoading}); 
       
-    case RECEIVE_EMPLOYEES:
-      return state;
-
     case RECEIVE_EMPLOYEE:
-      console.log('payload ', action)
-      return Object.assign({}, state, {employee: action.payload[0] });
+      return Object.assign({}, state, {employee: action.payload[0], isLoading: !state.isLoading });
 
     case SET_EMPLOYEE_VACATION:
       return state;

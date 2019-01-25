@@ -27,7 +27,6 @@ export function receiveEmployees(payload) {
 }
 
 export function receiveEmployee(payload) {
-  console.log('receiveE ', payload)
   return {
     type: RECEIVE_EMPLOYEE,
     payload: payload

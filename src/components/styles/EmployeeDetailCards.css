@@ -1,0 +1,21 @@
+.employeeDetailCardPhoto {
+  width: 150px;
+  height: 200px;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-top-left-radius: 15px !important;
+  border-top-right-radius: 15px !important;
+}
+.employeeDetailCard {
+  width: 21.8rem;
+  display: inline-block;
+  /* margin: 5px; */
+  border-radius: 15px !important;
+  /* cursor: pointer; */
+}
+
+.header-text {
+  font-weight: bold; 
+  font-size: 1.5rem;
+}
