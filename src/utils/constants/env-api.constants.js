@@ -1,0 +1,2 @@
+export const ENV_API_URL = 'http://localhost:3001';
+export const TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6dHJ1ZSwiaWF0IjoxNTQ5MzgwMDc1LCJleHAiOjE1NDk5ODQ4NzV9.p5L7EVu2tZL4vUJJlxva4nbee3IaPR1qhgcaAP6T5sI'

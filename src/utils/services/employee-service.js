@@ -1,5 +1,5 @@
-// import { EVP_API_URL } from '../constants/evp-api.constants';
-// import axios from 'axios';
+import { ENV_API_URL, TOKEN } from '../constants/env-api.constants';
+import axios from 'axios';
 import { employeeListMock } from '../constants/employee-list-mock';
 
 let instance = null;
@@ -10,20 +10,22 @@ class EmployeeService {
     if(!instance) {
       instance = this;
     }
-    // this.url = EVP_API_URL;
+    this.url = `${ENV_API_URL}/api`;
     return instance;
   }
 
-  getEmployees() {
+  async getEmployees() {
     // there is going to be an axios call to the server here.
-    const promise = new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve(employeeListMock);
-        // reject()
-      }, 1000);
-    });
+    // const promise = new Promise((resolve, reject) => {
+    //   setTimeout(() => {
+    //     resolve(employeeListMock);
+    //     // reject()
+    //   }, 1000);
+    // });
 
-    return promise;
+    const employees = await axios.get(`${this.url}/employee`, { headers: { 'x-access-token':  TOKEN} })
+
+    return employees;
   }
 
   getEmployeesOnVacation() {

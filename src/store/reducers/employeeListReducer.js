@@ -15,7 +15,7 @@ export function employeeListReducer(state = {
       case RECEIVE_EMPLOYEES:
       return Object.assign({}, state, {
         isLoading: !state.isLoading,
-        employees: [...action.payload]
+        employees: [...action.payload.data]
       });
 
     default: 

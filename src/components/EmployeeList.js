@@ -4,6 +4,7 @@ import { Table, Col } from 'reactstrap';
 import { fetchEmployees } from '../store/actions/EmployeeList';
 import { Animated } from 'react-animated-css';
 import Loading from './Loading';
+import { convertFromISOToShortDate } from '../utils/functions/util';
 
 class EmployeeList extends PureComponent {
 
@@ -32,9 +33,10 @@ class EmployeeList extends PureComponent {
               <Table striped>
                 <thead>
                   <tr>
-                    <th>#</th>
+                    <th>Code</th>
                     <th>Name</th>
                     <th>Title</th>
+                    <th>Mail</th>
                     <th>Hire Date</th>
                     <th>On Vacation</th>
                   </tr>
@@ -43,10 +45,11 @@ class EmployeeList extends PureComponent {
                 { 
                   employees.map((employee, index) => (
                     <tr key={index}>
-                      <th scope="row">{index + 1}</th>
+                      <th scope="row">{employee.employeeCode}</th>
                       <td>{employee.name + ' ' + employee.lastName}</td>
                       <td>{employee.title}</td>
-                      <td>{employee.hireDate}</td>
+                      <td>{employee.employeeMail}</td>
+                      <td>{convertFromISOToShortDate(employee.hireDate)}</td>
                       <td>{this.formatIsOnVacation(employee.vacationActive)}</td>
                     </tr>
                   ))

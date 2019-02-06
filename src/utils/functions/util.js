@@ -22,3 +22,18 @@ export function daysUntilDate(date) {
 
   return daysToEnd;
 }
+
+export function convertFromISOToShortDate(date) {
+  const formatedDate = new Date(date);
+  console.log('date ', formatedDate)
+  if (formatedDate) {
+    const year = formatedDate.getFullYear();
+    let month = formatedDate.getMonth() + 1;
+    let dt = formatedDate.getDate();
+
+    dt = dt < 10 ? dt ='0' + dt : dt;
+    month = month < 10 ? month = '0' + month : month;
+
+    return `${month}-${dt}-${year}`
+  } 
+}
