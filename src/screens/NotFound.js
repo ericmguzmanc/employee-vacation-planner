@@ -1,20 +1,44 @@
-import React, { Fragment } from 'react';
-import withSidebar from '../components/withSidebar';
+import React, { Fragment, useState, useEffect } from 'react';
+import { Container, Card, CardFooter, CardBody, Row, Col } from 'reactstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUmbrellaBeach } from '@fortawesome/free-solid-svg-icons';
 
-const  NotFound = () => {
+import './styles/common.css';
+
+function NotFound() {
+
+  const [height] = useState(window.innerHeight);
+
   return(
     <Fragment>
-      <h2>Not Found :(</h2>
+      <Container className="mainCointainer" style={{minHeight: `${height}px`}}>
+          <Card className="auth-card align-middle">
+            <CardBody>
+              
+              <Row style={{marginBottom: "20px"}}> 
+                <Col sm={12} className="text-center">
+                  <Col sm={12} className="text-center" style={{color: "#4795D6", fontSize: "2rem"}}>
+                    <FontAwesomeIcon icon={faUmbrellaBeach}/>
+                  </Col>
+                  <span style={{fontWeight: "bold", fontSize: "1.2rem"}}>Employee Vacation Planer</span>
+                </Col>
+              </Row>
+
+              <Col sm={12} className="text-center">
+                <h2>Page Not Found :(</h2>
+                <h2 style={{fontWeight:"bold", color:"#4c4c4c"}}>404</h2>
+              </Col>
+
+            </CardBody>
+            {/* <CardFooter className="text-center" style={{fontSize: "0.9rem"}}>
+              
+            </CardFooter> */}
+          </Card>
+        </Container>
     </Fragment>
   );
 };
 
-const mapStateToProps = ({ configuration: { sidebarExpanded } }) => {
-  return {
-    sidebarExpanded
-  }
-};
-
-export default withSidebar(NotFound, mapStateToProps);
+export default NotFound;
 
 
