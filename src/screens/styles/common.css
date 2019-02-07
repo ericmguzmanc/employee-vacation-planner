@@ -2,3 +2,43 @@
   font-weight: bold; 
   font-size: 1.5rem;
 }
+
+.auth-card {
+  margin: 0 auto;
+  width: 25rem;
+  border-radius: 15px !important;
+  background-color: #292929;
+}
+
+.singup-auth-card {
+  width: 30rem;
+}
+
+.auth-card .card-footer {
+  border-bottom-right-radius: 15px !important;
+  border-bottom-left-radius: 15px !important;
+}
+
+.auth-card input {
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.normal-input {
+  border-top-left-radius: 15px !important;
+  border-bottom-left-radius: 15px !important;
+}
+
+.mainCointainer {
+  display: flex;
+  align-items: center;
+}
+
+.input-group .input-group-prepend .input-group-text {
+  border-top-left-radius: 15px !important;
+  border-bottom-left-radius: 15px !important;
+}
+
+.auth-btn {
+  border-radius: 15px !important;
+}

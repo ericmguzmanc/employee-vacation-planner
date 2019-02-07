@@ -25,7 +25,6 @@ export function daysUntilDate(date) {
 
 export function convertFromISOToShortDate(date) {
   const formatedDate = new Date(date);
-  console.log('date ', formatedDate)
   if (formatedDate) {
     const year = formatedDate.getFullYear();
     let month = formatedDate.getMonth() + 1;

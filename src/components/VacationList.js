@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Card, CardImg, CardText, CardBody,
   CardTitle, Row, Col, Button } from 'reactstrap';
-import { fetchEmployeesOnVacation } from '../store/actions/VacationList';
+import { fetchEmployeesOnVacation } from '../store/actions/vacationList';
 import Loading from './Loading';
 import { Animated } from 'react-animated-css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

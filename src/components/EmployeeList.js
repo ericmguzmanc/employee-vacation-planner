@@ -1,7 +1,7 @@
 import React, { Fragment, PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { Table, Col } from 'reactstrap';
-import { fetchEmployees } from '../store/actions/EmployeeList';
+import { fetchEmployees } from '../store/actions/employeeList';
 import { Animated } from 'react-animated-css';
 import Loading from './Loading';
 import { convertFromISOToShortDate } from '../utils/functions/util';

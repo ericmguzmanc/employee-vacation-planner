@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Col, Card, Row, CardImg, CardBody, CardTitle,
 CardText, Container, CardHeader, Badge } from 'reactstrap';
 import './styles/EmployeeDetailCards.css';
-import { fetchEmployeeById } from '../store/actions/Employee';
+import { fetchEmployeeById } from '../store/actions/employee';
 import Loading from './Loading';
 import EmployeeForm from './EmployeeForm';
 

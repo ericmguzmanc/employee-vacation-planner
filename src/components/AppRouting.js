@@ -11,6 +11,14 @@ import Routes from './Routes';
 
 class AppRouter extends PureComponent {
 
+  state = {
+    isLoggedIn: false
+  }
+
+  componentDidMount() {
+
+  }
+
   onToggle = () => {
     this.props.toggleSidebarExpanded();
   }
@@ -25,8 +33,9 @@ class AppRouter extends PureComponent {
         <Router>
           <Route render={({ location, history }) => (
             <Fragment>
+            { this.state.isLoggedIn &&
               <SideNav
-                style={{backgroundColor: "black"}}
+                style={{backgroundColor: "#292929"}}
                 onSelect={(selected) => {
                   const to = '/' + selected;
                   if (location.pathname !== to) {
@@ -66,8 +75,9 @@ class AppRouter extends PureComponent {
                   </NavItem>
                 </Nav>
               </SideNav>
+              }
               <main>
-                <Routes />
+                <Routes loggedIn={this.state.isLoggedIn}/>
               </main>
             </Fragment>
             )}

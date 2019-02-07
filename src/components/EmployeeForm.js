@@ -1,5 +1,5 @@
-import React, { Fragment, PureComponent } from 'react';
-import { Button, Form, FormGroup, Label, Input, FormText,
+import React, { PureComponent } from 'react';
+import { Form, FormGroup, Label, Input, FormText,
 FormFeedback } from 'reactstrap';
 import './styles/EmployeeForm.css';
 

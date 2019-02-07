@@ -17,6 +17,7 @@ export function sidebarExpanded(payload) {
   }
 }
 
+
 export function toggleDarkMode() {
   return dispatch => {
     dispatch(setDarkMode());
