@@ -1,4 +1,4 @@
-import React, { Fragment, memo } from 'react';
+import React, { Fragment, memo, useEffect } from 'react';
 import { Route, withRouter, Redirect, Switch } from 'react-router-dom';
 import Home from '../screens/Home';
 import Employees from '../screens/Employees';
@@ -9,8 +9,10 @@ import LogOut from '../screens/Auth/LogOut';
 import NotFound from '../screens/NotFound';
 
 
-const Routes = memo(function Routes(props) {
 
+
+const Routes = memo(function Routes(props) {
+  
   const { loggedIn } = props;
 
   return(

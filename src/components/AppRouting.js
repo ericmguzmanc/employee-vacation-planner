@@ -12,11 +12,21 @@ import Routes from './Routes';
 class AppRouter extends PureComponent {
 
   state = {
-    isLoggedIn: false
+    isLoggedIn: this.props.auth.userLoggedIn,
+    knownRoute: true
   }
 
   componentDidMount() {
 
+  }
+
+  setKnownRouteToFalse = () => {
+    console.log('got in set known route to false')
+    this.setState({
+      knownRoute: false
+    });
+
+    console.log('this.state ', this.state)
   }
 
   onToggle = () => {
@@ -33,7 +43,7 @@ class AppRouter extends PureComponent {
         <Router>
           <Route render={({ location, history }) => (
             <Fragment>
-            { this.state.isLoggedIn &&
+            { (this.state.isLoggedIn && this.state.knownRoute ) &&
               <SideNav
                 style={{backgroundColor: "#292929"}}
                 onSelect={(selected) => {
@@ -77,7 +87,7 @@ class AppRouter extends PureComponent {
               </SideNav>
               }
               <main>
-                <Routes loggedIn={this.state.isLoggedIn}/>
+                <Routes loggedIn={this.state.isLoggedIn} /*setKnownRouteToFalse={ () => this.setKnownRouteToFalse()}*//>
               </main>
             </Fragment>
             )}
@@ -89,9 +99,10 @@ class AppRouter extends PureComponent {
 
 }
 
-const mapStateToProps = ({ configuration }) => {
+const mapStateToProps = ({ configuration, auth }) => {
   return {
-    sidebarExpanded: configuration.sidebarExpanded
+    sidebarExpanded: configuration.sidebarExpanded,
+    auth
   }
 }
 

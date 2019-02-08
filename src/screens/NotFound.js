@@ -1,11 +1,11 @@
-import React, { Fragment, useState, useEffect } from 'react';
+import React, { Fragment, useState } from 'react';
 import { Container, Card, CardFooter, CardBody, Row, Col } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUmbrellaBeach } from '@fortawesome/free-solid-svg-icons';
 
 import './styles/common.css';
 
-function NotFound() {
+function NotFound(props) {
 
   const [height] = useState(window.innerHeight);
 

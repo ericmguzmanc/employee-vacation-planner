@@ -1,15 +1,32 @@
 import React, { Fragment, PureComponent } from 'react'
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { Container, Card, CardFooter, CardBody, InputGroupText,
    Form, FormGroup, Row, Col, Input, Button, InputGroup, InputGroupAddon } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAt, faKey, faUmbrellaBeach } from '@fortawesome/free-solid-svg-icons';
+import { signIn } from '../../store/actions/auth';
 
 import '../styles/common.css';
 
 class SignIn extends PureComponent {
 
   state = {
-    height: window.innerHeight
+    height: window.innerHeight,
+    userLoggedIn: this.props.userLoggedIn
+  }
+
+  componentDidUpdate(prevProps, nextProps) {
+    const { history } = this.props;
+    if (this.props.userLoggedIn !== prevProps.userLoggedIn) {
+      // history push
+      console.log('props ', this.props)
+      history.push('/home')
+    }
+  }
+
+  logIn = () => {
+    this.props.signIn();
   }
 
   render() {
@@ -55,7 +72,7 @@ class SignIn extends PureComponent {
                 </FormGroup>
                 <FormGroup row className="text-center">
                   <Col sm={12}>
-                    <Button style={{width: "100%"}} className="auth-btn" color="primary">Sign In</Button>
+                    <Button style={{width: "100%"}} className="auth-btn" color="primary" onClick={() => this.logIn()}>Sign In</Button>
                   </Col>
                 </FormGroup>
               </Form>
@@ -75,4 +92,10 @@ class SignIn extends PureComponent {
   }
 }
 
-export default SignIn;
+const mapStateToProps = ({auth}) => {
+  return {
+    userLoggedIn: auth.userLoggedIn
+  }
+}
+
+export default withRouter(connect(mapStateToProps, { signIn })(SignIn));

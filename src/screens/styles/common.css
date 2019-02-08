@@ -32,6 +32,7 @@
 .mainCointainer {
   display: flex;
   align-items: center;
+  height: 100%;
 }
 
 .input-group .input-group-prepend .input-group-text {
@@ -42,3 +43,5 @@
 .auth-btn {
   border-radius: 15px !important;
 }
+
+
