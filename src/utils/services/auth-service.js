@@ -13,7 +13,17 @@ class AuthSerice {
     return instance;
   }
 
-  async authenticateUser() {
+  async signIn() {
+    const promise = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve({message: "got in timeout"})
+      }, 2000);
+    });
+
+    return await promise;
+  }
+
+  async signOut() {
     const promise = new Promise((resolve, reject) => {
       setTimeout(() => {
         resolve({message: "got in timeout"})

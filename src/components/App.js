@@ -7,9 +7,7 @@ import AppRouter from './AppRouting';
 
 const App = () => (
   <Provider store={store}>
-    {/* <div className="App"> */}
       <AppRouter />
-    {/* </div> */}
   </Provider>
 );
 

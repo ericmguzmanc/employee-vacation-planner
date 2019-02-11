@@ -13,18 +13,18 @@ import NotFound from '../screens/NotFound';
 
 const Routes = memo(function Routes(props) {
   
-  const { loggedIn } = props;
+  const { loggedIn } = props;  
 
   return(
     <Fragment>
       <Switch>
-        <Route exact path="/signin" component={props => <SignInRoute loggedIn={loggedIn} />} />
+        <Route exact path="/signin" component={props => <SignInRoute history={props} loggedIn={loggedIn} />} />
         <Route exact path="/signup" component={props => <SignUp />} />
         <Route exact path="/logout" component={props => <LogOut />} />
-        <PrivatRoute loggedIn={loggedIn} exact path="/" component={props => <Home />} />
-        <PrivatRoute loggedIn={loggedIn} exact path="/home" component={props => <Home />} />
-        <PrivatRoute loggedIn={loggedIn} exact path="/employees" component={props => <Employees />} />
-        <PrivatRoute loggedIn={loggedIn} path="/employee/:id" component={props => <EmployeeDetail />} />
+        <PrivateRoute loggedIn={loggedIn} exact path="/" component={props => <Home />} />
+        <PrivateRoute loggedIn={loggedIn} exact path="/home" component={props => <Home />} />
+        <PrivateRoute loggedIn={loggedIn} exact path="/employees" component={props => <Employees />} />
+        <PrivateRoute loggedIn={loggedIn} path="/employee/:id" component={props => <EmployeeDetail />} />
         <Route component={props => <NotFound />}/>
       </Switch>
     </Fragment>
@@ -43,8 +43,8 @@ const Routes = memo(function Routes(props) {
 //   }
 // }
 
-const PrivatRoute = ({ component: Component, loggedIn, ...rest }) => {
-
+const PrivateRoute = ({ component: Component, loggedIn, ...rest }) => {
+  // console.log('private route reload ', loggedIn)
   return(
     <Route {...rest} render={(props) => (
       loggedIn === true
@@ -54,10 +54,10 @@ const PrivatRoute = ({ component: Component, loggedIn, ...rest }) => {
   );
 };
 
-const SignInRoute = ({ loggedIn }) => (
+const SignInRoute = ({ loggedIn, history }) => (
     loggedIn === true
       ? <Redirect to='/home' />
-      : <SignIn />
+      : <SignIn router={history}/>
 );
 
 export default withRouter(Routes);

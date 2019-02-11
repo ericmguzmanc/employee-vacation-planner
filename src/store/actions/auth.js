@@ -29,16 +29,17 @@ export function logOut(payload) {
 
 
 export function signIn() {
-  return dispatch => {
-    dispatch(requestLogin());
-    AuthService.authenticateUser()
+  return async dispatch => {
+    await dispatch(requestLogin());
+    await AuthService.signIn()
       .then(() => dispatch(logIn()));
-    
   }
 }
 
 export function signOut() {
-  return dispatch => {
-    dispatch(requestLogOut());
+  return async dispatch => {
+    await dispatch(requestLogOut());
+    await AuthService.signOut()
+        .then(() => dispatch(logOut()));
   }
 }

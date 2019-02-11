@@ -3,10 +3,12 @@ import { BrowserRouter as Router, Route} from 'react-router-dom';
 import { connect } from 'react-redux';
 import SideNav, { Toggle, Nav, NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUmbrellaBeach, faUsers, faCog } from '@fortawesome/free-solid-svg-icons';
+import { faUmbrellaBeach, faUsers, faCog, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { Spinner, Col } from 'reactstrap';
 import './styles/Navbar.css';
 import { toggleSidebarExpanded } from '../store/actions/configurationActions';
 import Routes from './Routes';
+import { signOut } from '../store/actions/auth';
 
 
 class AppRouter extends PureComponent {
@@ -20,6 +22,10 @@ class AppRouter extends PureComponent {
 
   }
 
+  componentDidUpdate() {
+    // console.log('component did update ', this.props)
+  }
+
   setKnownRouteToFalse = () => {
     console.log('got in set known route to false')
     this.setState({
@@ -27,6 +33,10 @@ class AppRouter extends PureComponent {
     });
 
     console.log('this.state ', this.state)
+  }
+
+  signOut = async () => {
+    await this.props.signOut();
   }
 
   onToggle = () => {
@@ -40,16 +50,18 @@ class AppRouter extends PureComponent {
   render() {
     return(
       <Fragment>
-        <Router>
+        <Router styles={{opacity:"0.5"}}>
           <Route render={({ location, history }) => (
             <Fragment>
-            { (this.state.isLoggedIn && this.state.knownRoute ) &&
+            { (this.props.auth.userLoggedIn && this.state.knownRoute ) &&
               <SideNav
                 style={{backgroundColor: "#292929"}}
                 onSelect={(selected) => {
-                  const to = '/' + selected;
-                  if (location.pathname !== to) {
-                    history.push(to);
+                  if(selected !== undefined) {
+                    const to = '/' + selected;
+                    if (location.pathname !== to) {
+                      history.push(to);
+                    }
                   }
                 }}
                 expanded={this.props.sidebarExpanded}
@@ -83,11 +95,21 @@ class AppRouter extends PureComponent {
                         Settings
                     </NavText>
                   </NavItem>
+                  <NavItem onClick={() => this.signOut()}>
+                    <NavIcon>
+                      <FontAwesomeIcon icon={faSignOutAlt} />
+                    </NavIcon>
+                    <NavText>
+                      <span>
+                        Sign Out
+                      </span>
+                    </NavText>
+                  </NavItem>
                 </Nav>
               </SideNav>
               }
               <main>
-                <Routes loggedIn={this.state.isLoggedIn} /*setKnownRouteToFalse={ () => this.setKnownRouteToFalse()}*//>
+                <Routes loggedIn={this.props.auth.userLoggedIn} /*setKnownRouteToFalse={ () => this.setKnownRouteToFalse()}*//>
               </main>
             </Fragment>
             )}
@@ -104,6 +126,8 @@ const mapStateToProps = ({ configuration, auth }) => {
     sidebarExpanded: configuration.sidebarExpanded,
     auth
   }
-}
+};
 
-export default connect(mapStateToProps, { toggleSidebarExpanded })(AppRouter);
+// const AppRouting = connect(mapStateToProps, { toggleSidebarExpanded })(AppRouter);
+
+export default connect(mapStateToProps, { toggleSidebarExpanded, signOut })(AppRouter);

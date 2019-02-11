@@ -5,18 +5,19 @@ import {
   REQUEST_LOGOUT,
   LOG_OUT
 } from '../../utils/constants/actions.constants';
-
+import { loadState } from '../../components/localStorage';
 
 export function authReducer(
-  state = {
-    requestLoading: false,
-    userLoggedIn: false,
-    userLogged : {
-      id: '',
-      email: '',
-      admin: false
-    }
-  }
+  state = loadState()
+  // {
+  //   requestLoading: false,
+  //   userLoggedIn: false,
+  //   userLogged : {
+  //     id: '',
+  //     email: '',
+  //     admin: false
+  //   }
+  // }
   , action) {
   switch(action.type) {
     case REQUEST_LOGIN: 
@@ -38,8 +39,8 @@ export function authReducer(
     
     case LOG_OUT:
       return Object.assign({}, state, {
-        requestLoading: false,
-        userLoggedIn: !state.userLoggedIn,
+        userLoggedIn: false,
+        requestLoading: !state.requestLoading,
         userLogged: {
           id: '',
           email: '',

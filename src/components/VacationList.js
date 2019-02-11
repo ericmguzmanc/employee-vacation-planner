@@ -56,7 +56,7 @@ class VacationList extends PureComponent {
       <Fragment>
         <Animated animationIn="fadeIn" animationOut="fadeOut">
           <Col xs="12">
-            { isLoading && <Loading />}
+            { isLoading && <Loading type="grow"/>}
             { !isLoading &&
               employees.map((employee, index) => {
                 if (typeof employee.vacationActive !== undefined) {

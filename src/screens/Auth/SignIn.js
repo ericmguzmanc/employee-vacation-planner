@@ -1,11 +1,11 @@
 import React, { Fragment, PureComponent } from 'react'
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 import { Container, Card, CardFooter, CardBody, InputGroupText,
    Form, FormGroup, Row, Col, Input, Button, InputGroup, InputGroupAddon } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAt, faKey, faUmbrellaBeach } from '@fortawesome/free-solid-svg-icons';
 import { signIn } from '../../store/actions/auth';
+import PageLoading from '../../components/PageLoading';
 
 import '../styles/common.css';
 
@@ -13,26 +13,34 @@ class SignIn extends PureComponent {
 
   state = {
     height: window.innerHeight,
-    userLoggedIn: this.props.userLoggedIn
+    userLoggedIn: this.props.userLoggedIn,
+    isLoading: this.props.isLoading
+  }
+
+  componentDidMount() {
   }
 
   componentDidUpdate(prevProps, nextProps) {
-    const { history } = this.props;
-    if (this.props.userLoggedIn !== prevProps.userLoggedIn) {
-      // history push
-      console.log('props ', this.props)
-      history.push('/home')
-    }
+
   }
 
-  logIn = () => {
-    this.props.signIn();
+  signIn = async () => {
+    await this.props.signIn();
+    // console.log('finished logIn')
+    if (this.props.userLoggedIn) {
+      const { router } = this.props;
+      // console.log('logIn fn ', this.props)
+      router.history.push('/home');
+    }
   }
 
   render() {
     return(
       <Fragment>
-        <Container className="mainCointainer" style={{minHeight: `${this.state.height}px`}}>
+        <PageLoading isLoading={this.props.isLoading}/>
+        {
+          !this.props.isLoading && 
+          <Container className="mainCointainer" style={{minHeight: `${this.state.height}px`}}>
           <Card className="auth-card align-middle">
             <CardBody>
               
@@ -72,7 +80,7 @@ class SignIn extends PureComponent {
                 </FormGroup>
                 <FormGroup row className="text-center">
                   <Col sm={12}>
-                    <Button style={{width: "100%"}} className="auth-btn" color="primary" onClick={() => this.logIn()}>Sign In</Button>
+                    <Button style={{width: "100%"}} className="auth-btn" color="primary" onClick={() => this.signIn()}>Sign In</Button>
                   </Col>
                 </FormGroup>
               </Form>
@@ -87,6 +95,9 @@ class SignIn extends PureComponent {
             </CardFooter>
           </Card>
         </Container>
+
+        }
+        
       </Fragment>
     );
   }
@@ -94,8 +105,9 @@ class SignIn extends PureComponent {
 
 const mapStateToProps = ({auth}) => {
   return {
-    userLoggedIn: auth.userLoggedIn
+    userLoggedIn: auth.userLoggedIn,
+    isLoading: auth.requestLoading
   }
 }
 
-export default withRouter(connect(mapStateToProps, { signIn })(SignIn));
+export default connect(mapStateToProps, { signIn })(SignIn);
