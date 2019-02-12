@@ -25,7 +25,6 @@ export const doCheckAuthState = () => {
     const serializedState = localStorage.getItem('state');
     if (serializedState === null) {
       saveState({
-        requestLoading: false,
         userLoggedIn: false,
         userLogged : {
           id: '',

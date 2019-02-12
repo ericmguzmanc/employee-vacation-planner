@@ -1,17 +1,6 @@
-import { REQUEST_LOGIN, REQUEST_LOGOUT, LOG_IN, LOG_OUT } from '../../utils/constants/actions.constants';
+import { LOG_IN, LOG_OUT } from '../../utils/constants/actions.constants';
 import AuthService from '../../utils/services/auth-service';
-
-export function requestLogin() {
-  return {
-    type: REQUEST_LOGIN
-  }
-}
-
-export function requestLogOut() {
-  return {
-    type: REQUEST_LOGOUT
-  }
-}
+import { doReceive, doRequest } from './isFetching';
 
 export function logIn(payload) {
   return {
@@ -30,16 +19,18 @@ export function logOut(payload) {
 
 export function signIn() {
   return async dispatch => {
-    await dispatch(requestLogin());
+    await dispatch(doRequest());
     await AuthService.signIn()
       .then(() => dispatch(logIn()));
+    await dispatch(doReceive());
   }
 }
 
 export function signOut() {
   return async dispatch => {
-    await dispatch(requestLogOut());
+    // dispatch(doRequest());
     await AuthService.signOut()
         .then(() => dispatch(logOut()));
+    // dispatch(doReceive());
   }
 }

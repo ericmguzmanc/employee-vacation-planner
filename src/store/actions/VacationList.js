@@ -1,14 +1,8 @@
 import { 
-  REQUEST_EMPLOYEES_ON_VACATION,
   RECEIVE_EMPLOYEES_ON_VACATION,
 } from '../../utils/constants/actions.constants';
 import EmployeeService from '../../utils/services/employee-service';
-
-export function requestEmployeesOnVacation() {
-  return {
-    type: REQUEST_EMPLOYEES_ON_VACATION
-  }
-}
+import { doReceive, doRequest } from '../actions/isFetching';
 
 export function receiveEmployeesOnVacation(payload) {
   return {
@@ -18,9 +12,10 @@ export function receiveEmployeesOnVacation(payload) {
 }
 
 export function fetchEmployeesOnVacation() {
-  return dispatch => {
-    dispatch(requestEmployeesOnVacation());
-    EmployeeService.getEmployeesOnVacation()
+  return async dispatch => {
+    await dispatch(doRequest());
+    await EmployeeService.getEmployeesOnVacation()
       .then(response => dispatch(receiveEmployeesOnVacation(response)));
+    await dispatch(doReceive());
   }
 }

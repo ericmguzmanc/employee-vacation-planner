@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUmbrellaBeach, faUsers, faCog, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { Spinner, Col } from 'reactstrap';
 import './styles/Navbar.css';
-import { toggleSidebarExpanded } from '../store/actions/configurationActions';
+import { toggleSidebarExpanded } from '../store/actions/configuration';
 import Routes from './Routes';
 import { signOut } from '../store/actions/auth';
 

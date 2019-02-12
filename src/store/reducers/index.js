@@ -4,6 +4,7 @@ import { configurationReducer } from './configurationReducer';
 import { combineReducers } from 'redux';
 import { vacationListReducer } from './vacationListReducer';
 import { authReducer } from './authReducer';
+import { isFetching } from './isFetching';
 import {  saveState, doCheckAuthState } from '../../components/localStorage';
 
 
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
   selectedEmployee: selectedEmployeeReducer,
   employeeList: employeeListReducer,
   vacationList: vacationListReducer,
+  isFetching: isFetching,
   auth: authReducer,
   configuration: configurationReducer
 });

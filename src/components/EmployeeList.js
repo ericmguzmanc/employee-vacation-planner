@@ -22,7 +22,8 @@ class EmployeeList extends PureComponent {
 
   render() {
 
-    const { isLoading, employees } = this.props.employeeList;
+    const { employees } = this.props.employeeList;
+    const { isLoading } = this.props;
 
     return(
       <Fragment>
@@ -64,9 +65,10 @@ class EmployeeList extends PureComponent {
   }
 }
 
-const mapStateToProps = ( { employeeList } ) => {
+const mapStateToProps = ( { employeeList, isFetching } ) => {
   return {
-    employeeList
+    employeeList,
+    isFetching
   }
 };
 

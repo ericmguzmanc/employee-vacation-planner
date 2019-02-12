@@ -1,14 +1,6 @@
-import { 
-  REQUEST_EMPLOYEES,
-  RECEIVE_EMPLOYEES,
-} from '../../utils/constants/actions.constants';
+import { RECEIVE_EMPLOYEES } from '../../utils/constants/actions.constants';
 import EmployeeService from '../../utils/services/employee-service';
-
-export function requestEmployees() {
-  return {
-    type: REQUEST_EMPLOYEES
-  }
-}
+import { doRequest, doReceive } from '../actions/isFetching';
 
 export function receiveEmployees(payload) {
   return {
@@ -18,9 +10,10 @@ export function receiveEmployees(payload) {
 }
 
 export function fetchEmployees() {
-  return dispatch => {
-    dispatch(requestEmployees());
-    EmployeeService.getEmployees()
+  return async dispatch => {
+    dispatch(doRequest());
+    await EmployeeService.getEmployees()
       .then(response => dispatch(receiveEmployees(response)));
+    dispatch(doReceive());
   }
 }

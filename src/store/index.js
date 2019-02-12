@@ -8,13 +8,14 @@ import { saveState } from '../components/localStorage';
 const loggerMiddleware = createLogger();
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-let middleware = [ thunkMiddleware, loggerMiddleware ];
+let middleware = [ thunkMiddleware ];
 
-// const persistedState = loadState();
+if (process.env.NODE_ENV !== 'production') {
+  middleware.push(loggerMiddleware)
+}
 
 const store = createStore(
   rootReducer,
-  // persistedState, //
   composeEnhancers(
     applyMiddleware(...middleware)
   )

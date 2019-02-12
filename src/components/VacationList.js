@@ -50,7 +50,8 @@ class VacationList extends PureComponent {
 
   render() {
 
-    const { isLoading, employees } = this.props.vacationList;
+    const { employees } = this.props.vacationList;
+    const { isLoading } = this.props;
 
     return(
       <Fragment>
@@ -119,7 +120,8 @@ const cardButtonStyle = {
 
 const mapStateToProps = (state) => {
   return {
-    vacationList: state.vacationList
+    vacationList: state.vacationList,
+    isLoading: state.isFetching
   }
 }
 

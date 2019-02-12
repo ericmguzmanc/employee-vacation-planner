@@ -103,10 +103,10 @@ class SignIn extends PureComponent {
   }
 }
 
-const mapStateToProps = ({auth}) => {
+const mapStateToProps = ({auth, isFetching}) => {
   return {
     userLoggedIn: auth.userLoggedIn,
-    isLoading: auth.requestLoading
+    isLoading: isFetching
   }
 }
 

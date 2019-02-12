@@ -11,4 +11,6 @@ export const REQUEST_LOGIN = 'REQUEST_LOGIN';
 export const LOG_IN = 'LOG_IN';
 export const REQUEST_LOGOUT = 'REQUEST_LOGOUT';
 export const LOG_OUT = 'LOG_OUT';
+export const DO_REQUEST = 'DO_REQUEST';
+export const DO_RECEIVE = 'DO_RECEIVE';
  
