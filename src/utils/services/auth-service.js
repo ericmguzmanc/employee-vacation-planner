@@ -1,5 +1,5 @@
-import { ENV_API_URL, TOKEN } from '../constants/env-api.constants';
-import { axios } from 'axios';
+import { ENV_API_URL } from '../constants/env-api.constants';
+import axios from 'axios';
 
 let instance = null;
 
@@ -13,14 +13,17 @@ class AuthSerice {
     return instance;
   }
 
-  async signIn() {
-    const promise = new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve({message: "got in timeout"})
-      }, 2000);
-    });
+  async signIn(payload) {
+    // const promise = new Promise((resolve, reject) => {
+    //   console.log('before axios post ', axios)
+    //   axios.post(`${this.url}/user`, payload)
+    //     .then(res => resolve(res))
+    //     .catch(err => reject(err));
+    // });
 
-    return await promise;
+    const signIn = await axios.post(`${this.url}/user`, payload);
+
+    return signIn;
   }
 
   async signOut() {

@@ -5,7 +5,7 @@ import { combineReducers } from 'redux';
 import { vacationListReducer } from './vacationListReducer';
 import { authReducer } from './authReducer';
 import { isFetching } from './isFetching';
-import {  saveState, doCheckAuthState } from '../../components/localStorage';
+import { doCheckAuthState } from '../../components/localStorage';
 
 
 // const persistedState = loadState();

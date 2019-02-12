@@ -67,8 +67,8 @@ class EmployeeList extends PureComponent {
 
 const mapStateToProps = ( { employeeList, isFetching } ) => {
   return {
-    employeeList,
-    isFetching
+    employeeList: employeeList,
+    isFetching: isFetching.loading
   }
 };
 

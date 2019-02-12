@@ -1,4 +1,4 @@
-import React, { Fragment, memo, useEffect } from 'react';
+import React, { Fragment, memo } from 'react';
 import { Route, withRouter, Redirect, Switch } from 'react-router-dom';
 import Home from '../screens/Home';
 import Employees from '../screens/Employees';

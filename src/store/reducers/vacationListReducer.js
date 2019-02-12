@@ -1,5 +1,5 @@
 import {
-  REQUEST_EMPLOYEES_ON_VACATION, RECEIVE_EMPLOYEES_ON_VACATION
+  RECEIVE_EMPLOYEES_ON_VACATION
 } from '../../utils/constants/actions.constants';
 
 export function vacationListReducer(state = {

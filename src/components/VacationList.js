@@ -121,7 +121,7 @@ const cardButtonStyle = {
 const mapStateToProps = (state) => {
   return {
     vacationList: state.vacationList,
-    isLoading: state.isFetching
+    isLoading: state.isFetching.loading
   }
 }
 

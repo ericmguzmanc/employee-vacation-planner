@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from 'react';
-import { Container, Card, CardFooter, CardBody, Row, Col } from 'reactstrap';
+import { Container, Card, CardBody, Row, Col } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUmbrellaBeach } from '@fortawesome/free-solid-svg-icons';
 

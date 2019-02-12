@@ -26,6 +26,7 @@ export const doCheckAuthState = () => {
     if (serializedState === null) {
       saveState({
         userLoggedIn: false,
+        token: null,
         userLogged : {
           id: '',
           email: '',
@@ -45,7 +46,8 @@ export const getToken = () => {
     if (serializedState === null) {
       return undefined;
     }
-    return JSON.parse(serializedState)
+    const token = JSON.parse(serializedState).token
+    return token;
   } catch (err) {
     console.log('get token err ', err);
     return undefined;

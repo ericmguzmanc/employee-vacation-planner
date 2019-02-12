@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import SideNav, { Toggle, Nav, NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUmbrellaBeach, faUsers, faCog, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
-import { Spinner, Col } from 'reactstrap';
+// import { Spinner, Col } from 'reactstrap';
 import './styles/Navbar.css';
 import { toggleSidebarExpanded } from '../store/actions/configuration';
 import Routes from './Routes';

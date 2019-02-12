@@ -1,9 +1,14 @@
-export function isFetching (state = false, action) {
+export function isFetching (state = {
+  loading: false, 
+  error: {}
+}, action) {
   switch (action.type) {
     case 'DO_REQUEST':
-      return true;
+      return Object.assign({}, state, { loading: true });
     case 'DO_RECEIVE':
-      return false;
+      return Object.assign({}, state, { loading: false });
+    case 'REQUEST_ERROR':
+      return Object.assign({}, state, { error: action.payload });
     default:
       return state;
   }

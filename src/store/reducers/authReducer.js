@@ -15,19 +15,22 @@ export function authReducer(
   // }
   , action) {
   switch(action.type) {
-
     case LOG_IN:
+    const { data } = action.payload;
+      console.log('action in auth ', action.payload.data)
       return Object.assign({}, state, {
+        token: data.token,
         userLoggedIn: true, 
         userLogged : {
-          id: '1',
-          email: 'theericguzman@gmail.com',
-          admin: true
+          id: data.id,
+          email: data.email,
+          admin: data.admin
         } 
       });
-    
+  
     case LOG_OUT:
       return Object.assign({}, state, {
+        token: null,
         userLoggedIn: false,
         userLogged: {
           id: '',
