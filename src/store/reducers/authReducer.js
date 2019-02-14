@@ -1,6 +1,6 @@
 
 import { LOG_IN, LOG_OUT } from '../../utils/constants/actions.constants';
-import { loadState } from '../../components/localStorage';
+import { loadState } from '../../utils/functions/localStorage';
 
 export function authReducer(
   state = loadState()

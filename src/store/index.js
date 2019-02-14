@@ -3,7 +3,7 @@ import thunkMiddleware from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 import rootReducer from './reducers/index';
 import { throttle } from 'lodash';
-import { saveState } from '../components/localStorage';
+import { saveState } from '../utils/functions/localStorage';
 
 const loggerMiddleware = createLogger();
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

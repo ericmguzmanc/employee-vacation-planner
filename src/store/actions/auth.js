@@ -22,7 +22,6 @@ export function signIn(payload) {
     await dispatch(doRequest());
     await AuthService.signIn(payload)
       .then(res => {
-        console.log('res ', res)
         if (res.data.success) {
           dispatch(logIn(res.data))
         } else {
