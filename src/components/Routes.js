@@ -7,9 +7,7 @@ import SignIn from '../screens/Auth/SignIn';
 import SignUp from '../screens/Auth/SignUp';
 import LogOut from '../screens/Auth/LogOut';
 import NotFound from '../screens/NotFound';
-
-
-
+import * as ROUTES from '../utils/constants/routes';
 
 const Routes = memo(function Routes(props) {
   
@@ -18,30 +16,18 @@ const Routes = memo(function Routes(props) {
   return(
     <Fragment>
       <Switch>
-        <Route exact path="/signin" component={props => <SignInRoute history={props} loggedIn={loggedIn} />} />
-        <Route exact path="/signup" component={props => <SignUp />} />
-        <Route exact path="/logout" component={props => <LogOut />} />
+        <Route exact path={ROUTES.SING_IN} component={props => <SignInRoute history={props} loggedIn={loggedIn} />} />
+        <Route exact path={ROUTES.SING_UP} component={props => <SignUp />} />
+        <Route exact path={ROUTES.LOG_OUT} component={props => <LogOut />} />
         <PrivateRoute loggedIn={loggedIn} exact path="/" component={props => <Home />} />
-        <PrivateRoute loggedIn={loggedIn} exact path="/home" component={props => <Home />} />
-        <PrivateRoute loggedIn={loggedIn} exact path="/employees" component={props => <Employees />} />
-        <PrivateRoute loggedIn={loggedIn} path="/employee/:id" component={props => <EmployeeDetail />} />
+        <PrivateRoute loggedIn={loggedIn} exact path={ROUTES.HOME} component={props => <Home />} />
+        <PrivateRoute loggedIn={loggedIn} exact path={ROUTES.EMPLOYEES} component={props => <Employees />} />
+        <PrivateRoute loggedIn={loggedIn} path={`${ROUTES.EMPLOYEE}/:id`} component={props => <EmployeeDetail />} />
         <Route component={props => <NotFound />}/>
       </Switch>
     </Fragment>
   );
 });
-
-// const fakeAuth = {
-//   isAuthenticated: true,
-//   authenticate(cb) {
-//     this.isAuthenticated = true
-//     setTimeout(cb, 100)
-//   },
-//   signout(cb) {
-//     this.isAuthenticated = false
-//     setTimeout(cb, 100)
-//   }
-// }
 
 const PrivateRoute = ({ component: Component, loggedIn, ...rest }) => {
   // console.log('private route reload ', loggedIn)
@@ -49,14 +35,14 @@ const PrivateRoute = ({ component: Component, loggedIn, ...rest }) => {
     <Route {...rest} render={(props) => (
       loggedIn === true
         ? <Component {...props} />
-        : <Redirect to='/signin' />
+        : <Redirect to={ROUTES.SING_IN} />
     )} />
   );
 };
 
 const SignInRoute = ({ loggedIn, history }) => (
     loggedIn === true
-      ? <Redirect to='/home' />
+      ? <Redirect to={ROUTES.HOME} />
       : <SignIn router={history}/>
 );
 

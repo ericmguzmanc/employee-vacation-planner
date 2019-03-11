@@ -8,6 +8,8 @@ import { signIn } from '../../store/actions/auth';
 import PageLoading from '../../components/PageLoading';
 import FormErrors from '../../components/shared/FormErrors';
 
+import { HOME } from '../../utils/constants/routes';
+
 import '../styles/common.css';
 
 class SignIn extends PureComponent {
@@ -73,7 +75,7 @@ class SignIn extends PureComponent {
     if (this.props.userLoggedIn) {
       const { router } = this.props;
       // console.log('logIn fn ', this.props)
-      router.history.push('/home');
+      router.history.push(HOME);
     }
   }
 

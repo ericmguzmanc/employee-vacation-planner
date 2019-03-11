@@ -15,14 +15,6 @@ class EmployeeService {
   }
 
   async getEmployees() {
-    // there is going to be an axios call to the server here.
-    // const promise = new Promise((resolve, reject) => {
-    //   setTimeout(() => {
-    //     resolve(employeeListMock);
-    //     // reject()
-    //   }, 1000);
-    // });
-
     const employees = await axios.get(`${this.url}/employee`, { headers: { 'x-access-token':  TOKEN} })
 
     return employees;
